@@ -1,43 +1,24 @@
 const express = require('express');
 const router = express.Router();
-const https = require('https');
 const config = require('../config');
 const { fetch } = require('undici');
 
 var projects;
 var url = `${config.HACKADAY_API_URL}projects?api_key=${process.env.HACKADAY_API_KEY}`;
-// async function getProjects() {
-//     await fetch(url)
-//             .then(res => res.json())
-//             .then(res => {
-//                 projects = res;
-//             })
-//   }
-// getProjects();
-
 router.get('/', async (req, res) => {
-    if (!projects) {
+    // The following would not allow new data to be fetched once we load the projects initially.
+    // It would be better to implement caching but for now I am leaving it.
+    if( !projects ){
+        console.log('Fetching Projects')
         await fetch(url)
             .then(res => res.json())
             .then(res => {
-                projects = res;
-            })
+                projects = res.projects;
+        })
     }
-    res.send(projects);
-    // res.render('index');
+    res.render('index', {
+        projects: projects,
+    });
 });
 
 module.exports = router;
-
-
-
-// https.get(config.HACKADAY_API_URL + `projects?api_key=${process.env.HACKADAY_API_KEY}`, (res) => {
-//     console.log("Called API for projects");
-//     let data = '';
-//     res.on('data', (chunk) => {
-//         data += chunk;
-//     });
-//     res.on('end', function(){
-//         projects = JSON.parse(data);
-//     });
-// });
