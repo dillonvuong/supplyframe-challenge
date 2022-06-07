@@ -7,11 +7,11 @@ export default class extends AbstractView {
     }
 
     async getHtml() {
-        await fetch(`${process.env.HACKADAY_API_URL}projects?api_key=${process.env.HACKADAY_API_KEY}`)
-            .then(res => res.json())
-            .then(res => {
-                projects = res.projects;
-            })
+        // await fetch(`${process.env.HACKADAY_API_URL}projects?api_key=${process.env.HACKADAY_API_KEY}`)
+        //     .then(res => res.json())
+        //     .then(res => {
+        //         projects = res.projects;
+        //     })
         
         return `
             <h1>Welcome back, Dom</h1>

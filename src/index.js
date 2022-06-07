@@ -1,5 +1,5 @@
-import Home from "../javascript/views/Home.js";
-import Project from "../javascript/views/Project.js";
+import Home from "./views/Home.js";
+import Project from "./views/Project.js";
 
 const pathToRegex = path => new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$");
 
