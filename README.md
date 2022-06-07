@@ -1,5 +1,9 @@
 # supplyframe-challenge
 
+## How to Run:
+1. npm install
+2. npm build
+3. npm run dev
 
 Challenges I had to face along the way: 
 1. remove .env file completly from github after adding it to .gitignore followed [this](https://daily-dev-tips.com/posts/removing-a-env-file-from-git-history/) guide. However, this only removed it from the commit's repository but it still did not remove it from the commit history. I ended up deleting the API key and making a new one.
