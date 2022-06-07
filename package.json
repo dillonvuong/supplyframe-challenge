@@ -4,6 +4,7 @@
   "description": "Small Bugs on the dev.hackday.io pages: \r 1. This link is broken: https://github.com/SupplyFrame/had-api-example On this site https://dev.hackaday.io/doc/api/overview\r 2. Application Url and Callback Url are optional but if nothing is inputted, spacing is incorrect\r ![image](https://user-images.githubusercontent.com/39756756/172032586-638fe4cc-e58d-4788-983a-e730fcbe7294.png)\r 3. The only way to get to existing applications is to click \"Register Application\" which puts the view and create functionality onto that one button. Slightly unintuitive flow.",
   "main": "app.js",
   "scripts": {
+    "build": "webpack --mode production",
     "devStart": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,6 +26,8 @@
     "undici": "^5.4.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.16",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.9.2"
   }
 }
