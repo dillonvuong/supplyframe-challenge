@@ -1,6 +1,9 @@
 # supplyframe-challenge
 
 
+Challenges I had to face along the way: 
+1. remove .env file completly from github after adding it to .gitignore followed [this](https://daily-dev-tips.com/posts/removing-a-env-file-from-git-history/) guide 
+
 Small Bugs on the dev.hackday.io pages: 
 1. This link is broken: https://github.com/SupplyFrame/had-api-example On this site https://dev.hackaday.io/doc/api/overview
 2. Application Url and Callback Url are optional but if nothing is inputted, spacing is incorrect
