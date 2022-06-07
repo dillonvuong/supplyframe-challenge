@@ -8,3 +8,7 @@ Small Bugs on the dev.hackday.io pages:
 3. GET /projects/range part of the API is broken (500 internal server error): 
 
 https://api.hackaday.io/v1/projects/range?ids=50,150&api_key=YOUR_API_KEY&page=2&sortby=updated
+
+Features:
+backwards compatability with babel,
+hot reload

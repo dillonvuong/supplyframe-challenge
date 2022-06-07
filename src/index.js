@@ -1,6 +1,10 @@
 import Home from "./views/Home.js";
 import Project from "./views/Project.js";
+import './styles/main.scss';
+import logo from './assets/logo.png';
 
+const logoImg = document.getElementById('logoImg');
+logoImg.src = logo;
 const pathToRegex = path => new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$");
 
 const getParams = match => {
