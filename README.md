@@ -1,4 +1,10 @@
 # supplyframe-challenge
+How to run
+1. npm install 
+2. npm run build
+3. npm run dev
+will serve to localhost:3000
+
 
 
 Small Bugs on the dev.hackday.io pages: 
