@@ -1,9 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&display=swap');
+// variables & functions
+@import './sass/variables'; // Note: Order of imports matter and something general like variables should be imported first
 
-header {
-    background: lightblue
-}
+// base & layout
+@import './sass/base'; 
 
-body {
-    color: red
-}
+// colors 
+@import './sass/colors';
+
+// components (button, card, navbar)
+@import './sass/components/card';
+
+// utilities (margin, padding, opacity)

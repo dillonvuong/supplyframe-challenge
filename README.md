@@ -7,4 +7,7 @@
 ## New things tried:
 1. Webpack for SPA implementation (but did not end up working since API key was not working)
 2. New undici server side fetch (possible errors here!)
-3. Gulp for sass compilation 
+3. Gulp for sass compilation (discard in favor of WatchSass Vscode plugin because it seemed like it wasn't doing what I wanted it to do and also adds an unnecessary dependancy)
+
+## Miscellaneous Questions
+1. The Live Sass Viewer seems much more convienent than gulp however it generates an extra css.map file and also did not work with the sass:math module. Is gulp better because I was also having trouble setting that up.

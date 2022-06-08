@@ -27,8 +27,6 @@
     "undici": "^5.4.0"
   },
   "devDependencies": {
-    "gulp": "^4.0.2",
-    "gulp-sass": "^5.1.0",
     "nodemon": "^2.0.16",
     "sass": "^1.52.2"
   }

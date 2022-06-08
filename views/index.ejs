@@ -1,8 +1,9 @@
 <div class="container">
     <% for(let object of details){ %>
-        <div>
-            <h1><%= object.project.name %></h1>
-            <h1><%= object.owner.name %></h1>
+        <div class="card">
+            <h1 class="card-title"><%= object.project.name %></h1>
+            <h1 class="card-title"><%= object.owner_name %></h1>
+            <p class="card-body"><%= object.project.description %></p>
         </div>
         
     <% } %>    
