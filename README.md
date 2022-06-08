@@ -15,5 +15,9 @@
 ## Miscellaneous Questions
 1. The Live Sass Viewer seems much more convienent than gulp however it generates an extra css.map file and also did not work with the sass:math module. Is gulp better because I was also having trouble setting that up. I thought the most useful thing about gulp is that it has the ability to purge unused css classes from main.css such that the generated file is potentially not thousands of lines long.
 
+
+## Nice to Haves
+1. Sticky "Back to Top" anchored on the bottom right of page button which appears after scrolling down a little.
+
 ## Compromises/things to optimize
 1. Dropped Bootstrap NPM and favored CDN because I couldn't wrap my head around the folder structure
