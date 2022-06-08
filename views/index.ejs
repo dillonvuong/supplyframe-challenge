@@ -1,1 +1,9 @@
-Middle
+<div class="container">
+    <% for(let object of details){ %>
+        <div>
+            <h1><%= object.project.name %></h1>
+            <h1><%= object.owner.name %></h1>
+        </div>
+        
+    <% } %>    
+</div>
