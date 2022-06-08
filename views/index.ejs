@@ -1,10 +1,11 @@
-<div class="container">
+<div class="row gap-2 justify-center">
     <% for(let object of details){ %>
-        <div class="card">
-            <h1 class="card-title"><%= object.project.name %></h1>
-            <h1 class="card-title"><%= object.owner_name %></h1>
-            <p class="card-body"><%= object.project.description %></p>
+        <div class="col-12-xs col-5-sm col-4-xl">
+            <div class="card">
+                <h1 class="card-title"><%= object.project.name %></h1>
+                <h1 class="card-title"><%= object.owner_name %></h1>
+                <p class="card-body"><%= object.project.description %></p>
+            </div>
         </div>
-        
     <% } %>    
 </div>
