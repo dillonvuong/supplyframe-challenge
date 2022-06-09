@@ -10,7 +10,8 @@
 2. New undici server side fetch (possible errors here!)
 3. Gulp for sass compilation (discard in favor of WatchSass Vscode plugin because it seemed like it wasn't doing what I wanted it to do and also adds an unnecessary dependancy).
 4. Followed [this tutorial](https://www.youtube.com/watch?v=_kqN4hl9bGc&t=5s&ab_channel=TheNetNinja) in order to create custom CSS library via sass and learned about partials in sass, breakpoints, grid, variables, functions, layouts, mixins and utilities. Later dropped this in favor of Bootstrap for the sake of convience and time. 
-5. Followed [this tutorial](https://www.youtube.com/watch?v=gdn9B0LCiI4&ab_channel=PixelRocket) to install Bootstrap with NPM instead of CDN: When I've used bootstrap before I used the CDN method. This is not as good because it does not allow you to strip and extraneous CSS (with purge CSS) as well as modifying custom variables/components.
+5. Followed [this tutorial](https://www.youtube.com/watch?v=gdn9B0LCiI4&ab_channel=PixelRocket) to install Bootstrap with NPM instead of CDN: When I've used bootstrap before I used the CDN method. This is not as good because it does not allow you to strip extraneous CSS (with purge CSS) as well as modifying custom variables/components.
+6. [Bootstrap Masonry](https://getbootstrap.com/docs/5.0/examples/masonry/) layout: Initially I was wondering how to design the cards because some images are longer than others. Thought of scaling it down like the Hackaday website so that they are all square but I figured a pinterest like layout would look nicer :)
 
 ## Miscellaneous Questions
 1. The Live Sass Viewer seems much more convienent than gulp however it generates an extra css.map file and also did not work with the sass:math module. Is gulp better because I was also having trouble setting that up. I thought the most useful thing about gulp is that it has the ability to purge unused css classes from main.css such that the generated file is potentially not thousands of lines long.
@@ -18,6 +19,16 @@
 
 ## Nice to Haves
 1. Sticky "Back to Top" anchored on the bottom right of page button which appears after scrolling down a little.
+2. Search bar for getting projects with certain keywords (elastic search functionality?)
+3. "Filter by" functionality working
+4. "Per page" functionality working
 
 ## Compromises/things to optimize
 1. Dropped Bootstrap NPM and favored CDN because I couldn't wrap my head around the folder structure
+
+## How I develop and learn
+1. Discord. Discord is my number one resource (right after stack, of course).
+2. Youtube tutorials related directly to a starter app I am doing.
+
+## Example of how I solved certain problems
+1. How to display cards (fill in later with images from this [link](https://discord.com/channels/102860784329052160/105765765117935616/984148225298694184) forward ). I first tried to get inspiration for the card design by looking on Dribble, posting on Discord, and also asking my cousin, who is a UX/UI designer. Initially I was thinking of having a 3 column, centered design for the posts (kind of like instagram) as well as having the cards perfectly squared, as they are on the official Hackaday site. However, after looking more into it I believed that the masonry card layout would be best fit for a design like this (inspired initially by pinterest). The [Material Design](https://material.io/components/cards#card-collections) website also helped me style the card and recommends something similar for a collection. Then I was faced with the problem of how to get the cards to look like they do on [Dribble](dribble.com). I asked on Discord an a user pointed out that I had to change the max-width property of the container. I made the container fluid after reading the [documentation](https://getbootstrap.com/docs/5.0/layout/containers/) on Bootstrap. In the end, to make it what I wanted, I inspected the dribble site and found that they also use a fluid container but with 72 px of padding addded on each side. 
