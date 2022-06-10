@@ -29,18 +29,30 @@
 			</ul>
 		</nav>
 		<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-3" data-masonry='{"percentPosition": true, "itemSelector": ".col", "horizontalOrder": true}'>
+			<% let formatter = Intl.NumberFormat('en', { notation: 'compact' }); %>
 			<% for(let object of details){ %>
 				<div class="col">
-					<div class="card shadow-sm">
+					<div class="card shadow-lg bg-light rounded">
 						<img alt="<%= object.project.name %>" src="<%= object.project.image_url %>" class="card-img-top">
+						<div style="display: block; height: 1px; background: #e3e3e3;"></div>
 						<div class="card-body">
 							<h5 class="card-title"><%= object.project.name %></h5>
 							<p class="card-text"><%= object.project.summary %></p>
 							<div class="d-flex justify-content-between align-items-center">
-							<div class="btn-group">
-								<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-							</div>
-							<small class="text-muted"><%= object.owner_name %></small>
+								<div class="user-information">
+									<a data-link="<%= object.owner_id %>" class="d-flex justify-content-center align-items-center" style="text-decoration: none; padding-right: 4px;">
+										<div class="flex-shrink-0">
+											<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-2.webp"
+											alt="Generic placeholder image" class="img-fluid rounded-circle"
+											style="width: 30px;">
+										</div>
+										<div class="user-display-name"><%= object.owner_name %></div>
+									</a>
+								</div>
+								<div class="d-flex justify-content-between align-items-center" style="gap:5px;">
+									<img src="/images/views.svg" alt="" class="filter-gray-3" height="22">
+									<div class=""><%= formatter.format(object.project.views) %></div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -63,4 +75,5 @@
 		</nav>
 	</div>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+<script src="/javascript/hover.js"

@@ -34,3 +34,22 @@ img{
   padding: 0.5rem 0.75rem;
   position: relative;
 }
+
+.user-display-name {
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -ms-flex: 1;
+  flex: 1;
+  margin-left: 8px;
+  color: #0d0c22;
+}
+
+/* color filter for SVGS */
+.filter-gray-3 {
+  filter: invert(56%) sepia(0%) saturate(295%) hue-rotate(168deg) brightness(89%) contrast(85%);
+}
