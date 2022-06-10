@@ -14,11 +14,14 @@
 5. Followed [this tutorial](https://www.youtube.com/watch?v=gdn9B0LCiI4&ab_channel=PixelRocket) to install Bootstrap with NPM instead of CDN: When I've used bootstrap before I used the CDN method. This is not as good because it does not allow you to strip extraneous CSS (with purge CSS) as well as modifying custom variables/components.
 6. [Bootstrap Masonry](https://getbootstrap.com/docs/5.0/examples/masonry/) layout: Initially I was wondering how to design the cards because some images are longer than others. Thought of scaling it down like the Hackaday website so that they are all square but I figured a pinterest like layout would look nicer :)
 7. Using a [color palette](https://colorhunt.co/palette/f0f5f9c9d6df52616b1e2022)! 
+8. Changing the color of an SVG with a css filter
+9. Asking for help in Discord and using [CodePen](https://codepen.io/dillonvuong/pen/gOvQGyV) for the first time to share my code with another, more senior dev! I didn't know how to get the code onto code pen at first but all you need to do is copy the HTML from devtools
+
 
 ## Miscellaneous Questions
 1. The Live Sass Viewer seems much more convienent than gulp however it generates an extra css.map file and also did not work with the sass:math module. Is gulp better because I was also having trouble setting that up. I thought the most useful thing about gulp is that it has the ability to purge unused css classes from main.css such that the generated file is potentially not thousands of lines long.
 2. Would fetching all the projects then fetching their respective user be an N+1 query? I don't interact with a DB in my codebase but when I think about it... calling a fetch on the Hackaday API is really just one layer removed from that API returning me data. This is under the assumption that the Hackaday API is using a SQL database.
-
+3. [Event Delegation](https://davidwalsh.name/event-delegate) to make it so that specific nodes didn't trigger the event. However it didn't work with my "user-information" div which was NOT unique and belonged to each. It was because the user-information div was too thin literally 1px so I couldnt hit the event with my mouse precision and I didnt know that it was that thin. Why is this?
 
 ## Nice to Haves
 1. Sticky "Back to Top" anchored on the bottom right of page button which appears after scrolling down a little.
@@ -39,3 +42,4 @@
 
 ## Example of how I solved certain problems
 1. How to display cards (fill in later with images from this [link](https://discord.com/channels/102860784329052160/105765765117935616/984148225298694184) forward ). I first tried to get inspiration for the card design by looking on Dribble, posting on Discord, and also asking my cousin, who is a UX/UI designer. Initially I was thinking of having a 3 column, centered design for the posts (kind of like instagram) as well as having the cards perfectly squared, as they are on the official Hackaday site. However, after looking more into it I believed that the masonry card layout would be best fit for a design like this (inspired initially by pinterest). The [Material Design](https://material.io/components/cards#card-collections) website also helped me style the card and recommends something similar for a collection. Then I was faced with the problem of how to get the cards to look like they do on [Dribble](dribble.com). I asked on Discord an a user pointed out that I had to change the max-width property of the container. I made the container fluid after reading the [documentation](https://getbootstrap.com/docs/5.0/layout/containers/) on Bootstrap. In the end, to make it what I wanted, I inspected the dribble site and found that they also use a fluid container but with 72 px of padding addded on each side. 
+2. This [chain](https://discord.com/channels/102860784329052160/984734163036950529) asking for code optimization 🔥🔥🔥

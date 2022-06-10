@@ -1,12 +1,12 @@
-const userInformations = document.querySelectorAll('.user-information');
-console.log(userInformations)
-
-// need to fetch from customer server endpoint 
-userInformations.forEach(userInformation => {
-  userInformation.addEventListener('mouseover', (event) => {
-    console.log(event.target);
-  });
-  userInformation.addEventListener('mouseleave', (event) => {
-    console.log('leaving!')
-  });
+document.addEventListener('mouseover',function(e){
+  if(e.target && e.target.classList?.contains('user-hoverable')){
+    console.log('matched...')
+  }
 });
+
+// the following code below was given to me by another dev but I think event delegation is best
+// const userInformations = document.querySelectorAll('.user-information')
+// const onMouseOver = event => console.log(event.target)
+
+// userInformations.map(userInfo => userInfo.addEventListener('mouseover', onMouseOver))
+
