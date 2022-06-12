@@ -4,6 +4,7 @@ const expressLayouts = require('express-ejs-layouts')
 const app = express()
 
 const indexRouter = require('./routes/index')
+const usersRouter = require('./routes/users')
 
 // Static Files
 app.use(express.static("public"))
@@ -19,6 +20,7 @@ app.use(expressLayouts)
 
 
 app.use('/', indexRouter)
+app.use('/users', usersRouter)
 
 
 // 404 page

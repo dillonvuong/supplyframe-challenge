@@ -1,6 +1,12 @@
 document.addEventListener('mouseover',function(e){
   if(e.target && e.target.classList?.contains('user-hoverable')){
-    console.log('matched...')
+    console.log('matched...');
+    fetch(`/users/${e.target.getAttribute('data-link')}`)
+      .then( res => res.json())
+      .then( res => console.log(res))
+      .catch(error => {
+        console.log(error); 
+      })
   }
 });
 

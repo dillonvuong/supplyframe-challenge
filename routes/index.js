@@ -6,6 +6,7 @@ const { fetch } = require('undici');
 var projects;
 var projects_url = `${config.HACKADAY_API_URL}projects?api_key=${process.env.HACKADAY_API_KEY}`;
 
+
 // this is just for development
 var development_pre_generated_data = require('./pregenerated.json');
 projects = development_pre_generated_data.projects;
@@ -24,7 +25,7 @@ router.get('/', async (req, res) => {
             .then(res => res.json())
             .then(res => {
                 details.push(
-                    {"project": project, 
+                    {project: project, 
                     owner_name: res.screen_name, 
                     owner_image: res.image_url, 
                     owner_id: res.id});
