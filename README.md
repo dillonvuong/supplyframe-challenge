@@ -1,4 +1,6 @@
 # supplyframe-challenge
+![image](https://user-images.githubusercontent.com/39756756/173314511-aac3b74d-8578-4d98-b087-43140f939b3b.png)
+
 ## How to run
 1. In root directory run ```npm install``` 
 2. Change .env_sample to .env and also input a working [Hackaday.io](https://dev.hackaday.io/) API key
