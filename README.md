@@ -1,4 +1,9 @@
 # supplyframe-challenge
+## How to run
+1. In root directory run ```npm install``` 
+2. Change .env_sample to .env and also input a working API key
+3. run ```npm run devStart``
+ 
 
 ## Challenges I faced
 1. remove .env file completly from github after adding it to .gitignore followed [this](https://daily-dev-tips.com/posts/removing-a-env-file-from-git-history/) guide. However, this only removed it from the commit's repository but it still did not remove it from the commit history. I ended up revoking the API key and making a new one.
