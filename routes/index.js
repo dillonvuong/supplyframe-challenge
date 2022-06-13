@@ -3,64 +3,52 @@ const router = express.Router();
 const config = require('../config');
 const { fetch } = require('undici');
 
-var projects;
-router.get('/', async (req, res) => {
-    let details = [];
-    let page;
-    let lastPage = false;
-    if (!req.query.page){
-        page = 1;
+router.get("/", async (req, res) => {
+    let page = 1;
+    if (req.query.page) {
+      page = parseInt(req.query.page);
     }
-    else{
-        page = parseInt(req.query.page);
-    }
-    await fetch(`${config.HACKADAY_API_URL}/projects?api_key=${process.env.HACKADAY_API_KEY}` + `&page=${page}`)
-        .then(res => res.json())
-        .then(res => {
-            projects = res.projects;
-            lastPage = (page >= res.last_page)
+  
+    const response = await fetch(
+      `${config.HACKADAY_API_URL}/projects?api_key=${process.env.HACKADAY_API_KEY}&page=${page}`
+    );
+    const projectResults = await response.json();
+    const lastPage = page >= projectResults.last_page;
+  
+    const details = await Promise.all(
+      (projectResults.projects ?? []).map(async (project) => {
+        const user_url = `${config.HACKADAY_API_URL}/users/${project.owner_id}?api_key=${process.env.HACKADAY_API_KEY}`;
+        const userResponse = await fetch(user_url);
+        const user = await userResponse.json();
+        return {
+          project,
+          owner_name: user.screen_name,
+          owner_image: user.image_url,
+          owner_id: user.id,
+        };
+      })
+    );
+  
+    res.render("index", {
+      details: details,
+      page: page,
+      lastPage: lastPage,
     });
-    for( let project of projects ){
-        var user_url = `${config.HACKADAY_API_URL}/users/${project.owner_id}?api_key=${process.env.HACKADAY_API_KEY}`;
-        await fetch(user_url)
-            .then(res => res.json())
-            .then(res => {
-                details.push(
-                    {project: project, 
-                    owner_name: res.screen_name, 
-                    owner_image: res.image_url, 
-                    owner_id: res.id});
-        });
-    }
-    res.render('index', {
-        details: details,
-        page: page,
-        lastPage: lastPage,
+  });
+  
+  router.get("/project/:id", async (req, res) => {
+    const projectResponse = await fetch(
+      `${config.HACKADAY_API_URL}/projects/${req.params.id}?api_key=${process.env.HACKADAY_API_KEY}`
+    );
+    const project = await projectResponse.json();
+    const user_url = `${config.HACKADAY_API_URL}/users/${project.owner_id}?api_key=${process.env.HACKADAY_API_KEY}`;
+    const userResponse = await fetch(user_url);
+    const owner = await userResponse.json();
+  
+    res.render("project", {
+      project,
+      owner,
     });
-});
-
-router.get('/project/:id', async (req, res) => {
-    let project;
-    let owner;
-    let similarProjects = []; // TODO: similar projects functionality is not implemented but I was intended to send it in the res.render
-    await fetch(`${config.HACKADAY_API_URL}/projects/${req.params.id}?api_key=${process.env.HACKADAY_API_KEY}`)
-        .then(result => result.json())
-        .then(result => {
-            project = result;
-        })
-        .catch( error => {
-            res.send(error);
-        });
-    var user_url = `${config.HACKADAY_API_URL}/users/${project.owner_id}?api_key=${process.env.HACKADAY_API_KEY}`;
-    await fetch(user_url)
-        .then(result => result.json())
-        .then(result => {
-            owner = result;
-    });
-    res.render('project', {
-        project: project,
-        owner: owner,
-    })
-});
+  });
 
 module.exports = router;

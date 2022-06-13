@@ -1,16 +1,3 @@
-var grid = document.querySelector('.grid');
-
-console.log(grid)
-var msnry = new Masonry( grid, {
-  itemSelector: '.col',
-  percentPosition: true
-});
-
-imagesLoaded( grid ).on( 'progress', function() {
-  // layout Masonry after each image loads
-  msnry.layout();
-});
-
 // Code below is related to user hover 
 const fetchedUserInfos = new Map();
 document.addEventListener('mouseover',function(e){
