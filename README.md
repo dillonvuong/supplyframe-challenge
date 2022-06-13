@@ -10,7 +10,7 @@
 
 ## Challenges I faced
 1. remove .env file completly from github after adding it to .gitignore followed [this](https://daily-dev-tips.com/posts/removing-a-env-file-from-git-history/) guide. However, this only removed it from the commit's repository but it still did not remove it from the commit history. I ended up revoking the API key and making a new one.
-2. Figure out how to hide the API key after serving all the javascript to the client in a single page app. Used webpack bundler to fix this. Followed [this](https://www.youtube.com/watch?v=IZGNcSuwBZs&ab_channel=TraversyMedia) webpack tutorial. After [searching on stack](https://stackoverflow.com/questions/67555680/how-to-use-webpack-in-javascript-to-hide-api-key) about this issue and asking for help in a discord server. After looking into it I decided not to go down this route because webpack doesn't actually hide the API key (user can inspect source and find it in the bundle.js). All external API calls are handled by the server.
+2. Figure out how to hide the API key after serving all the javascript to the client in a single page app. Used webpack bundler to fix this. Followed [this](https://www.youtube.com/watch?v=IZGNcSuwBZs&ab_channel=TraversyMedia) webpack tutorial. After [searching on stack](https://stackoverflow.com/questions/67555680/how-to-use-webpack-in-javascript-to-hide-api-key) about this issue and asking for help in a discord server. I decided not to go down this route because webpack doesn't actually hide the API key (user can inspect source and find it in the bundle.js). All external API calls are handled by the server.
 3. There are many different ways to structure the folder/files and different ways to build (webpack, parcel) or not at all (node app.js) in order to serve webpages. I had some troubles when resources I used have a different folder structure than what I'm developing in.
 4. I was having fun developing but then I got limited by the API call limit "Hourly limit exceeded" but its been 3 hours :thinking:
 5. Had more trouble with showing the tooltips than I expected. Eventually copied and pasted code from [W3schools](https://www.w3schools.com/howto/howto_css_tooltip.asp). Overflow hidden on user-name causes tooltip to not show (got stuck on this for awhile)
@@ -37,7 +37,7 @@
 ## Compromises/things to optimize
 1. Dropped Bootstrap NPM and favored CDN because I couldn't wrap my head around the folder structure
 2. Implement Cacheing ([1](https://www.geeksforgeeks.org/api-response-caching-using-apicache-middleware-in-node-js/), [2](https://www.npmjs.com/package/lru-cache)) for faster load speeds. [Browser cacheing API](https://developer.mozilla.org/en-US/docs/Web/API/Cache) should be used too instead of the map in public/javascript/index.js.
-3. The tooltip could be much better, it just shows the rank of the user for now. Also, the user's name does not have ellipses applied to it because ```overflow: hidden;``` made it so that the tooltip does not show. This is an open HTML/CSS nesting/class issue and I decided to lose the text truncation in favor of time.
+3. The tooltip could be much better, it just shows the rank of the user for now. Also, the user's name does not have ellipses applied to it because ```overflow: hidden;``` made it so that the tooltip does not show. This is an open HTML/CSS nesting/class issue and I decided to lose the text truncation in favor of time. See [this](https://discord.com/channels/425824580918181889/733717840930013284/985632794749333604) response from the [Nodeiflux Discord Server](https://discord.gg/GH6zyvfQ4B) 
 4. Since I am using the CDN version of Bootstrap, no unused css stylings were purged.
 
 ## Project Objectives which were not finished
@@ -51,6 +51,7 @@
 3. "Filter by" functionality working
 4. "Per page" functionality working
 5. More complext pagination with 
+6. Favicon and custom tab text based on page
 
 ## Cool Ideas
 1. Make the bottom part of the card have a glassmorphic linux terminal styling
