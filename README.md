@@ -1,7 +1,7 @@
 # supplyframe-challenge
 ## How to run
 1. In root directory run ```npm install``` 
-2. Change .env_sample to .env and also input a working API key
+2. Change .env_sample to .env and also input a working [Hackaday.io](https://dev.hackaday.io/) API key
 3. run ```npm run devStart```
 4. Open browser to localhost:8080
  
@@ -35,8 +35,13 @@
 ## Compromises/things to optimize
 1. Dropped Bootstrap NPM and favored CDN because I couldn't wrap my head around the folder structure
 2. Implement Cacheing ([1](https://www.geeksforgeeks.org/api-response-caching-using-apicache-middleware-in-node-js/), [2](https://www.npmjs.com/package/lru-cache)) for faster load speeds. [Browser cacheing API](https://developer.mozilla.org/en-US/docs/Web/API/Cache) should be used too instead of the map in public/javascript/index.js.
-3. I could not get related projects tags done so a placeholder of lorem ipsum text is given instead (just to show what the design would have looked like)
-4. The tooltip could be much better, it just shows the rank of the user for now. Also, the user's name does not have ellipses applied to it because ```overflow: hidden;``` made it so that the tooltip does not show. This is an open HTML/CSS nesting/class issue and I decided to lose the text truncation in favor of time.
+3. The tooltip could be much better, it just shows the rank of the user for now. Also, the user's name does not have ellipses applied to it because ```overflow: hidden;``` made it so that the tooltip does not show. This is an open HTML/CSS nesting/class issue and I decided to lose the text truncation in favor of time.
+4. Since I am using the CDN version of Bootstrap, no unused css stylings were purged.
+
+## Project Objectives which were not finished
+1. "Show 'recommended projects' and/or 'recommended users' by comparing the selected project's tags with the tags of other projects/users. I could not get related projects tags done so a placeholder of lorem ipsum text is given instead (just to show what the design would have looked like). 
+2. "Implement your favorite test framework/tool to check your work as you go - the level of detail is up to you." 
+
 
 ## Nice to Haves
 1. Sticky "Back to Top" anchored on the bottom right of page button which appears after scrolling down a little.
@@ -58,7 +63,7 @@
 
 ## Example of how I solved certain problems
 #### 1. Cards and Design of the Index page
-I first tried to get inspiration for the card design by looking on Dribble, posting on Discord, and also asking my cousin, who is a UX/UI designer. Initially I was thinking of having a 3 column, centered design for the posts (kind of like instagram) as well as having the cards perfectly squared, as they are on the official Hackaday site. However, after looking more into it I believed that the masonry card layout would be best fit for a design like this (inspired initially by pinterest). The [Material Design](https://material.io/components/cards#card-collections) website also helped me style the card and recommends something similar for a collection. Then I was faced with the problem of how to get the cards to look like they do on [Dribble](dribble.com). I asked on Discord and a user pointed out that I had to change the max-width property of the container. I made the container fluid after reading the [documentation](https://getbootstrap.com/docs/5.0/layout/containers/) on Bootstrap. In the end, to make it what I wanted, I inspected the dribble site and found that they also use a fluid container but with 72 px of padding addded on each side. 
+I first tried to get inspiration for the card design by looking on Dribble, posting on Discord, and also asking my cousin, who is a UX/UI designer. Initially I was thinking of having a 3 column, centered design for the posts (kind of like instagram) as well as having the cards perfectly squared, as they are on the official Hackaday site. However, after looking more into it I believed that the masonry card layout would be best fit for a design like this (inspired initially by pinterest) because it would be easier to consume the content. The [Material Design](https://material.io/components/cards#card-collections) website also helped me style the card and recommends something similar for a collection. Then I was faced with the problem of how to get the cards to look like they do on [Dribble](dribble.com). I asked on Discord and a user pointed out that I had to change the max-width property of the container. I made the container fluid after reading the [documentation](https://getbootstrap.com/docs/5.0/layout/containers/) on Bootstrap. In the end, to make it what I wanted, I inspected the dribble site and found that they also use a fluid container but with 72 px of padding addded on each side. 
 #### 2. Asking for help about code optimization, leading to me learning about Event Delegation
 Initially I had the event listeners working by querying for all the divs with ".user-information", however, I wanted to know if this was the best way to go about this. The following images are from the [Reactiflux Discord Community](https://discord.gg/f7bm7w5YdF) (if you want to see [the thread we talked on](https://discord.com/channels/102860784329052160/984734163036950529) you will need to join the server on your Discord account).
 ![image](https://user-images.githubusercontent.com/39756756/173306410-40b60861-a109-41e0-99de-2da6a4dd968f.png)
