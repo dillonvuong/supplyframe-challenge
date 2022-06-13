@@ -60,9 +60,9 @@
 
 ## How I develop and learn
 1. Search problem on stackoverflow and if it is not solved in 5 minutes, continue
-2. Post question on Discord developer community with screenshots in hopes that someone can answer it while I am looking into Youtube tutorials
+2. If question is general and non-revealing of internal company infrastrucutre: Post question on Discord developer community in hopes that someone can answer it while I am looking into Youtube tutorials
 3. Youtube tutorials directly related to the feature/bugfix I am doing.
-4. If all of the above does not work, post the question on stackoverflow and hope it doesn't get downvoted
+4. If all of the above does not work, post the question on stackoverflow
 
 ## Example of how I solved certain problems
 #### 1. Cards and Design of the Index page
