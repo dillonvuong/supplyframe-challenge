@@ -4,7 +4,6 @@
   "description": "Supply Frame app to view projects from HACKADAY API.",
   "main": "app.js",
   "scripts": {
-    "gulp": "gulp",
     "devStart": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,7 +19,6 @@
   "homepage": "https://github.com/dillonvuong/supplyframe-challenge#readme",
   "dependencies": {
     "dotenv": "^16.0.1",
-    "dotenv-webpack": "^7.1.0",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
     "express-ejs-layouts": "^2.5.1",
@@ -28,7 +26,6 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.16",
-    "parcel": "^2.6.0",
     "sass": "^1.52.2"
   }
 }
