@@ -18,6 +18,7 @@
     </div>
     <div class="py-5"></div>
     <h2>Similar Projects</h2>
+    <!-- TODO: Similar projects is not implemented, the following code is placeholder to show my intended design -->
     <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-3" >
         <% let formatter = Intl.NumberFormat('en', { notation: 'compact' }); %>
         <% for(let x = 0; x < 5; x++){ %>
@@ -33,11 +34,10 @@
                                 <div class="flex-shrink-0">
                                     <img src="https://cdn.hackaday.io/images/1085561390426767411.png"
                                     alt="Generic placeholder image" class="img-fluid rounded-circle"
-                                    style="width: 30px;">
+                                    style="width: 30px; height: 30px;">
                                 </div>
-                                <div data-link="1234" class="user-display-name  user-hoverable">
-                                    Owner
-                                    <span class="user-hoverable-text"></span>
+                                <div class="user-display-name  user-hoverable">
+                                    User
                                 </div>
                             </a>
                             <div class="d-flex justify-content-between align-items-center" style="gap:5px;">
@@ -45,7 +45,7 @@
                                 <div class=""><%= formatter.format("999999") %></div>
                             </div>
                         </div>
-                        <a href="/<%= project.id %>" class="stretched-link"></a>
+                        <a href="/project/<%= project.id %>" class="stretched-link"></a>
                     </div>
                 </div>
             </div>

@@ -1,13 +1,14 @@
-// init Masonry
-var $grid = document.getElementById('masonry').masonry({
+var grid = document.querySelector('.grid');
+
+console.log(grid)
+var msnry = new Masonry( grid, {
   itemSelector: '.col',
-  percentPosition: true,
-  columnWidth: '.grid-sizer'
+  percentPosition: true
 });
 
-// layout Masonry after each image loads
-$grid.imagesLoaded().progress( function() {
-  $grid.masonry();
+imagesLoaded( grid ).on( 'progress', function() {
+  // layout Masonry after each image loads
+  msnry.layout();
 });
 
 // Code below is related to user hover 
@@ -28,7 +29,7 @@ document.addEventListener('mouseover',function(e){
         })
     }
     else if (!tooltip.textContent){
-      // Edge Case: if it's the same userID that we already have but on a differnt card
+      // Edge Case: if it's the same userID that we already have but on a different card
       // it will not have a textContent but the info will be in the Map from above
       tooltip.textContent = `Rank: ${fetchedUserInfos.get(userId).rank}`;
     }

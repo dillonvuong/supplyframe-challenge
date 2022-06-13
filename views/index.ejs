@@ -1,20 +1,5 @@
-<!-- <section class="py-5 text-center container">
-	<div class="row py-lg-5">
-	  <div class="col-lg-6 col-md-8 mx-auto">
-		<h1 class="fw-light">Discover the World</h1>
-		<p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
-		<p>
-		  <a href="#" class="btn btn-primary my-2">Main call to action</a>
-		  <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-		</p>
-	  </div>
-	</div>
-</section> -->
 <div class="py-5 bg-light">
-	<div id="masonry" class="container-fluid">
-		<!-- <form role="search">
-			<input class="form-control" type="search" placeholder="Search" aria-label="Search">
-		</form> -->
+	<div class="container-fluid">
 		<nav aria-label="Page navigation bottom">
 			<ul class="pagination justify-content-right">
 			  <li class="page-item <% if (page <= 1) { %> disabled <% } %>">
@@ -25,7 +10,7 @@
 			  </li>
 			</ul>
 		</nav>
-		<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-3" data-masonry='{"percentPosition": true, "itemSelector": ".col", "horizontalOrder": true}'>
+		<div class="grid row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-3" data-masonry='{"percentPosition": true, "itemSelector": ".col", "horizontalOrder": true}'>
 			<% let formatter = Intl.NumberFormat('en', { notation: 'compact' }); %>
 			<% for(let object of details){ %>
 				<div class="col">
@@ -72,4 +57,5 @@
 	</div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
 <script src="/javascript/index.js"></script>

@@ -4,7 +4,6 @@ const config = require('../config');
 const { fetch } = require('undici');
 
 var projects;
-
 router.get('/', async (req, res) => {
     let details = [];
     let page;
@@ -43,7 +42,7 @@ router.get('/', async (req, res) => {
 router.get('/project/:id', async (req, res) => {
     let project;
     let owner;
-    let similarProjects = [];
+    let similarProjects = []; // TODO: similar projects functionality is not implemented but I was intended to send it in the res.render
     await fetch(`${config.HACKADAY_API_URL}/projects/${req.params.id}?api_key=${process.env.HACKADAY_API_KEY}`)
         .then(result => result.json())
         .then(result => {
