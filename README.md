@@ -2,46 +2,50 @@
 ## How to run
 1. In root directory run ```npm install``` 
 2. Change .env_sample to .env and also input a working API key
-3. run ```npm run devStart``
+3. run ```npm run devStart```
+4. Open browser to localhost:8080
  
 
 ## Challenges I faced
 1. remove .env file completly from github after adding it to .gitignore followed [this](https://daily-dev-tips.com/posts/removing-a-env-file-from-git-history/) guide. However, this only removed it from the commit's repository but it still did not remove it from the commit history. I ended up revoking the API key and making a new one.
 2. Figure out how to hide the API key after serving all the javascript to the client in a single page app. Used webpack bundler to fix this. Followed [this](https://www.youtube.com/watch?v=IZGNcSuwBZs&ab_channel=TraversyMedia) webpack tutorial. After [searching on stack](https://stackoverflow.com/questions/67555680/how-to-use-webpack-in-javascript-to-hide-api-key) about this issue and asking for help in a discord server. After looking into it I decided not to go down this route because webpack doesn't actually hide the API key (user can inspect source and find it in the bundle.js). All external API calls are handled by the server.
 3. There are many different ways to structure the folder/files and different ways to build (webpack, parcel) or not at all (node app.js) in order to serve webpages. I had some troubles when resources I used have a different folder structure than what I'm developing in.
-4. I was having fun developing but then I got limited by the API call limit :( "Hourly limit exceeded" but its been 3 hours :thinking:
-5. Had more trouble with showing the tooltips than I expected. Eventually copied and pasted code from [W3schools](https://www.w3schools.com/howto/howto_css_tooltip.asp).Overflow hidden on user-name causes tooltip to not show (got stuck on this for awhile)
+4. I was having fun developing but then I got limited by the API call limit "Hourly limit exceeded" but its been 3 hours :thinking:
+5. Had more trouble with showing the tooltips than I expected. Eventually copied and pasted code from [W3schools](https://www.w3schools.com/howto/howto_css_tooltip.asp). Overflow hidden on user-name causes tooltip to not show (got stuck on this for awhile)
 
 
 ## New things tried:
 1. Webpack for SPA implementation (but did not end up working since API key was not hidden in the client bundle.js)
 2. New undici server side fetch (possible errors here!)
-3. Gulp for sass compilation (discard in favor of WatchSass Vscode plugin because it seemed like it wasn't doing what I wanted it to do and also adds an unnecessary dependancy).
+3. Gulp for sass compilation (discarded in favor of WatchSass Vscode plugin because it seemed like it wasn't doing what I wanted it to do and also adds an unnecessary dependancy). Eventually discarded for Bootstrap.
 4. Followed [this tutorial](https://www.youtube.com/watch?v=_kqN4hl9bGc&t=5s&ab_channel=TheNetNinja) in order to create custom CSS library via sass and learned about partials in sass, breakpoints, grid, variables, functions, layouts, mixins and utilities. Later dropped this in favor of Bootstrap for the sake of convience and time. 
-5. Followed [this tutorial](https://www.youtube.com/watch?v=gdn9B0LCiI4&ab_channel=PixelRocket) to install Bootstrap with NPM instead of CDN: When I've used bootstrap before I used the CDN method. This is not as good because it does not allow you to strip extraneous CSS (with purge CSS) as well as modifying custom variables/components.
-6. [Bootstrap Masonry](https://getbootstrap.com/docs/5.0/examples/masonry/) layout: Initially I was wondering how to design the cards because some images are longer than others. Thought of scaling it down like the Hackaday website so that they are all square but I figured a pinterest like layout would look nicer :)
-7. Using a [color palette](https://colorhunt.co/palette/f0f5f9c9d6df52616b1e2022)! 
-8. Changing the color of an SVG with a css filter
-9. Asking for help in Discord and using [CodePen](https://codepen.io/dillonvuong/pen/gOvQGyV) for the first time to share my code with another, more senior dev! I didn't know how to get the code onto code pen at first but all you need to do is copy the HTML from devtools
+5. Followed [this tutorial](https://www.youtube.com/watch?v=gdn9B0LCiI4&ab_channel=PixelRocket) to install Bootstrap with NPM instead of CDN: When I've used bootstrap before I used the CDN method. Did not manage to get the NPM version running and CDN was enough for me. This is not as good because it does not allow you to strip extraneous CSS (with purge CSS) as well as modifying custom variables/components.
+6. [Bootstrap Masonry](https://getbootstrap.com/docs/5.0/examples/masonry/) layout: Initially I was wondering how to design the cards because some images are longer than others. Thought of scaling it down like the Hackaday website so that they are all square but I figured a pinterest like layout would look nicer
+7. Changing the color of an SVG with a css filter
+8. Asking for help in Discord and using [CodePen](https://codepen.io/dillonvuong/pen/gOvQGyV) for the first time to share my code with another, more senior dev! I didn't know how to get the code onto code pen at first but all you need to do is copy the HTML from devtools.
 
 
 ## Miscellaneous Questions
 1. The Live Sass Viewer seems much more convienent than gulp however it generates an extra css.map file and also did not work with the sass:math module. Is gulp better because I was also having trouble setting that up. I thought the most useful thing about gulp is that it has the ability to purge unused css classes from main.css such that the generated file is potentially not thousands of lines long.
 2. Would fetching all the projects then fetching their respective user be an N+1 query? I don't interact with a DB in my codebase but when I think about it... calling a fetch on the Hackaday API is really just one layer removed from that API returning me data. This is under the assumption that the Hackaday API is using a SQL database.
 3. [Event Delegation](https://davidwalsh.name/event-delegate) to make it so that specific nodes didn't trigger the event. However it didn't work with my "user-information" div which was NOT unique and belonged to each. It was because the user-information div was too thin literally 1px so I couldnt hit the event with my mouse precision and I didnt know that it was that thin. Why is this?
+4. I was not able to get projects with similar tags. It seems as if there is code there to determine a tag's id and I wonder if the external API doesn't have this functionality yet? Since I do not have the SQL database I couldn't use a join which is what I wanted to do at first. How would this have been done with only the external API? I was thinking of using the project search endpoint but it didn't seem to work as well. 
 
 ## Nice to Haves
 1. Sticky "Back to Top" anchored on the bottom right of page button which appears after scrolling down a little.
-2. Search bar for getting projects with certain keywords (elastic search functionality?)
+2. Search bar for getting projects with certain keywords 
 3. "Filter by" functionality working
 4. "Per page" functionality working
+5. More complext pagination with 
 
 ## Cool Ideas
-1. Make the bottom part of the card have a glassmorphic linux terminal styling.
+1. Make the bottom part of the card have a glassmorphic linux terminal styling
 2. The cards which have the most "skulls" or hackers should have a black and green card styling to make it distinct.
+3. CSS animated text in a banner which types out phrases on repeat with linux terminal style. [Example](https://www.youtube.com/watch?v=4J1WszR6PGk&ab_channel=KODAmoah)
 
 ## Compromises/things to optimize
 1. Dropped Bootstrap NPM and favored CDN because I couldn't wrap my head around the folder structure
+2. Implement Cacheing ([1](https://www.geeksforgeeks.org/api-response-caching-using-apicache-middleware-in-node-js/), [2](https://www.npmjs.com/package/lru-cache)) for faster load speeds. [Browser cacheing API](https://developer.mozilla.org/en-US/docs/Web/API/Cache) should be used too instead of the map in public/javascript/index.js.
 
 ## How I develop and learn
 1. Discord. Discord is my number one resource (right after stack, of course).
@@ -52,5 +56,3 @@
 2. This [chain](https://discord.com/channels/102860784329052160/984734163036950529) asking for code optimization 🔥🔥🔥
 
 
-## Bugs
-1. Navigating with browser back and forward buttons causes a hit to the endpoint and results in a Bad Request.
