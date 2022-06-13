@@ -1,0 +1,54 @@
+<div class="container py-5">
+    <div class="row row-cols-1 row-cols-sm-2">
+        <div class="col">
+            <img alt="<%= project.name %>" class="img-fluid rounded shadow-lg" src="<%= project.image_url %>">
+        </div>
+        <div class="col">
+            <h2><%= project.name %></h2>
+            <div class="d-flex align-items-center py-5">
+                <div class="flex-shrink-0">
+                    <img src="<%= owner.image_url%>"
+                    alt="Generic placeholder image" class="img-fluid rounded-circle"
+                    style="width: 80px; height:80px;">
+                </div>
+                <h3 style="padding-left:5px;"><%= owner.screen_name %></h3>
+            </div>
+            <p><%= project.description %></p>
+        </div>
+    </div>
+    <div class="py-5"></div>
+    <h2>Similar Projects</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-3" >
+        <% let formatter = Intl.NumberFormat('en', { notation: 'compact' }); %>
+        <% for(let x = 0; x < 5; x++){ %>
+            <div class="col">
+                <div class="card shadow-lg bg-light rounded">
+                    <img alt="Image" src="https://cdn.hackaday.io/images/1085561390426767411.png" class="card-img-top">
+                    <div style="display: block; height: 1px; background: #e3e3e3;"></div>
+                    <div class="card-body">
+                        <h5 class="card-title">Project Name</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique unde tenetur dignissimos accusamus.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a class="d-flex justify-content-center align-items-center" style="text-decoration: none; padding-right: 4px;">
+                                <div class="flex-shrink-0">
+                                    <img src="https://cdn.hackaday.io/images/1085561390426767411.png"
+                                    alt="Generic placeholder image" class="img-fluid rounded-circle"
+                                    style="width: 30px;">
+                                </div>
+                                <div data-link="1234" class="user-display-name  user-hoverable">
+                                    Owner
+                                    <span class="user-hoverable-text"></span>
+                                </div>
+                            </a>
+                            <div class="d-flex justify-content-between align-items-center" style="gap:5px;">
+                                <img src="/images/views.svg" alt="" class="filter-gray-3" height="22">
+                                <div class=""><%= formatter.format("999999") %></div>
+                            </div>
+                        </div>
+                        <a href="/<%= project.id %>" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+        <% } %>    
+    </div>
+</div>

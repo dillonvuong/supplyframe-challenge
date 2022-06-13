@@ -1,4 +1,4 @@
-<section class="py-5 text-center container">
+<!-- <section class="py-5 text-center container">
 	<div class="row py-lg-5">
 	  <div class="col-lg-6 col-md-8 mx-auto">
 		<h1 class="fw-light">Discover the World</h1>
@@ -9,22 +9,19 @@
 		</p>
 	  </div>
 	</div>
-</section>
-<div class="album py-5 bg-light">
-	<div class="container-fluid">
-		<form role="search">
+</section> -->
+<div class="py-5 bg-light">
+	<div id="masonry" class="container-fluid">
+		<!-- <form role="search">
 			<input class="form-control" type="search" placeholder="Search" aria-label="Search">
-		</form>
-		<nav aria-label="Page navigation example">
-			<ul class="pagination justify-content-end">
-			  <li class="page-item disabled">
-				<a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+		</form> -->
+		<nav aria-label="Page navigation bottom">
+			<ul class="pagination justify-content-right">
+			  <li class="page-item <% if (page <= 1) { %> disabled <% } %>">
+				<a class="page-link" href="?page=<%=(page*1-1)%>" tabindex="-1" aria-disabled="true">Previous</a>
 			  </li>
-			  <li class="page-item"><a class="page-link" href="#">1</a></li>
-			  <li class="page-item"><a class="page-link" href="#">2</a></li>
-			  <li class="page-item"><a class="page-link" href="#">3</a></li>
-			  <li class="page-item">
-				<a class="page-link" href="#">Next</a>
+			  <li class="page-item <% if (lastPage) { %> disabled <% } %>">
+				<a class="page-link" href="?page=<%=(page*1+1)%>">Next</a>
 			  </li>
 			</ul>
 		</nav>
@@ -39,41 +36,40 @@
 							<h5 class="card-title"><%= object.project.name %></h5>
 							<p class="card-text"><%= object.project.summary %></p>
 							<div class="d-flex justify-content-between align-items-center">
-								<div>
-									<a data-link="<%= object.owner_id %>" class="d-flex justify-content-center align-items-center user-hoverable" style="text-decoration: none; padding-right: 4px;">
-										<div class="flex-shrink-0">
-											<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-2.webp"
-											alt="Generic placeholder image" class="img-fluid rounded-circle"
-											style="width: 30px;">
-										</div>
-										<div class="user-display-name"><%= object.owner_name %></div>
-									</a>
-								</div>
+								<a class="d-flex justify-content-center align-items-center" style="text-decoration: none; padding-right: 4px;">
+									<div class="flex-shrink-0">
+										<img src="<%= object.owner_image%>"
+										alt="Generic placeholder image" class="img-fluid rounded-circle"
+										style="width: 30px; height: 30px">
+									</div>
+									<div data-link="<%= object.owner_id %>" class="user-display-name  user-hoverable">
+										<%= object.owner_name %>
+										<span class="user-hoverable-text"></span>
+									</div>
+								</a>
 								<div class="d-flex justify-content-between align-items-center" style="gap:5px;">
 									<img src="/images/views.svg" alt="" class="filter-gray-3" height="22">
 									<div class=""><%= formatter.format(object.project.views) %></div>
 								</div>
 							</div>
+							<a href="/project/<%= object.project.id %>" class="stretched-link"></a>
 						</div>
 					</div>
 				</div>
 			<% } %>    
 		</div>
 		<br>
-		<nav aria-label="Page navigation example">
+		<nav aria-label="Page navigation bottom">
 			<ul class="pagination justify-content-center">
-			  <li class="page-item disabled">
-				<a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+			  <li class="page-item <% if (page <= 1) { %> disabled <% } %>">
+				<a class="page-link" href="?page=<%=(page*1-1)%>" tabindex="-1" aria-disabled="true">Previous</a>
 			  </li>
-			  <li class="page-item"><a class="page-link" href="#">1</a></li>
-			  <li class="page-item"><a class="page-link" href="#">2</a></li>
-			  <li class="page-item"><a class="page-link" href="#">3</a></li>
-			  <li class="page-item">
-				<a class="page-link" href="#">Next</a>
+			  <li class="page-item <% if (lastPage) { %> disabled <% } %>">
+				<a class="page-link" href="?page=<%=(page*1+1)%>">Next</a>
 			  </li>
 			</ul>
 		</nav>
 	</div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
-<script src="/javascript/hover.js"
+<script src="/javascript/index.js"></script>

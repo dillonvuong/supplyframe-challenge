@@ -4,23 +4,25 @@ const config = require('../config');
 const { fetch } = require('undici');
 
 var projects;
-var projects_url = `${config.HACKADAY_API_URL}projects?api_key=${process.env.HACKADAY_API_KEY}`;
-
-
-// this is just for development
-var development_pre_generated_data = require('./pregenerated.json');
-projects = development_pre_generated_data.projects;
 
 router.get('/', async (req, res) => {
     let details = [];
-    console.log(projects_url)
-    // await fetch(projects_url + `&page=${req.query.page}`)
-    //     .then(res => res.json())
-    //     .then(res => {
-    //         projects = res.projects;
-    // });
+    let page;
+    let lastPage = false;
+    if (!req.query.page){
+        page = 1;
+    }
+    else{
+        page = parseInt(req.query.page);
+    }
+    await fetch(`${config.HACKADAY_API_URL}/projects?api_key=${process.env.HACKADAY_API_KEY}` + `&page=${page}`)
+        .then(res => res.json())
+        .then(res => {
+            projects = res.projects;
+            lastPage = (page >= res.last_page)
+    });
     for( let project of projects ){
-        var user_url = `${config.HACKADAY_API_URL}users/${project.owner_id}?api_key=${process.env.HACKADAY_API_KEY}`;
+        var user_url = `${config.HACKADAY_API_URL}/users/${project.owner_id}?api_key=${process.env.HACKADAY_API_KEY}`;
         await fetch(user_url)
             .then(res => res.json())
             .then(res => {
@@ -33,7 +35,33 @@ router.get('/', async (req, res) => {
     }
     res.render('index', {
         details: details,
+        page: page,
+        lastPage: lastPage,
     });
+});
+
+router.get('/project/:id', async (req, res) => {
+    let project;
+    let owner;
+    let similarProjects = [];
+    await fetch(`${config.HACKADAY_API_URL}/projects/${req.params.id}?api_key=${process.env.HACKADAY_API_KEY}`)
+        .then(result => result.json())
+        .then(result => {
+            project = result;
+        })
+        .catch( error => {
+            res.send(error);
+        });
+    var user_url = `${config.HACKADAY_API_URL}/users/${project.owner_id}?api_key=${process.env.HACKADAY_API_KEY}`;
+    await fetch(user_url)
+        .then(result => result.json())
+        .then(result => {
+            owner = result;
+    });
+    res.render('project', {
+        project: project,
+        owner: owner,
+    })
 });
 
 module.exports = router;

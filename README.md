@@ -5,6 +5,8 @@
 2. Figure out how to hide the API key after serving all the javascript to the client in a single page app. Used webpack bundler to fix this. Followed [this](https://www.youtube.com/watch?v=IZGNcSuwBZs&ab_channel=TraversyMedia) webpack tutorial. After [searching on stack](https://stackoverflow.com/questions/67555680/how-to-use-webpack-in-javascript-to-hide-api-key) about this issue and asking for help in a discord server. After looking into it I decided not to go down this route because webpack doesn't actually hide the API key (user can inspect source and find it in the bundle.js). All external API calls are handled by the server.
 3. There are many different ways to structure the folder/files and different ways to build (webpack, parcel) or not at all (node app.js) in order to serve webpages. I had some troubles when resources I used have a different folder structure than what I'm developing in.
 4. I was having fun developing but then I got limited by the API call limit :( "Hourly limit exceeded" but its been 3 hours :thinking:
+5. Had more trouble with showing the tooltips than I expected. Eventually copied and pasted code from [W3schools](https://www.w3schools.com/howto/howto_css_tooltip.asp).Overflow hidden on user-name causes tooltip to not show (got stuck on this for awhile)
+
 
 ## New things tried:
 1. Webpack for SPA implementation (but did not end up working since API key was not hidden in the client bundle.js)
@@ -43,3 +45,7 @@
 ## Example of how I solved certain problems
 1. How to display cards (fill in later with images from this [link](https://discord.com/channels/102860784329052160/105765765117935616/984148225298694184) forward ). I first tried to get inspiration for the card design by looking on Dribble, posting on Discord, and also asking my cousin, who is a UX/UI designer. Initially I was thinking of having a 3 column, centered design for the posts (kind of like instagram) as well as having the cards perfectly squared, as they are on the official Hackaday site. However, after looking more into it I believed that the masonry card layout would be best fit for a design like this (inspired initially by pinterest). The [Material Design](https://material.io/components/cards#card-collections) website also helped me style the card and recommends something similar for a collection. Then I was faced with the problem of how to get the cards to look like they do on [Dribble](dribble.com). I asked on Discord an a user pointed out that I had to change the max-width property of the container. I made the container fluid after reading the [documentation](https://getbootstrap.com/docs/5.0/layout/containers/) on Bootstrap. In the end, to make it what I wanted, I inspected the dribble site and found that they also use a fluid container but with 72 px of padding addded on each side. 
 2. This [chain](https://discord.com/channels/102860784329052160/984734163036950529) asking for code optimization 🔥🔥🔥
+
+
+## Bugs
+1. Navigating with browser back and forward buttons causes a hit to the endpoint and results in a Bad Request.

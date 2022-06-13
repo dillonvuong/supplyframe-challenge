@@ -5,7 +5,7 @@ const { fetch } = require('undici');
 
 // endpoint for hover on userpage
 router.get('/:id', async (req, res) => {
-    let users_url = `${config.HACKADAY_API_URL}users/${req.params.id}?api_key=${process.env.HACKADAY_API_KEY}`;
+    let users_url = `${config.HACKADAY_API_URL}/users/${req.params.id}?api_key=${process.env.HACKADAY_API_KEY}`;
     await fetch(users_url)
         .then(result => result.json())
         .then(result => {
