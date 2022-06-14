@@ -53,7 +53,7 @@ You will need Node v18.0.0 in order to run the new undici server-side fetch
 2. Search bar for getting projects with certain keywords 
 3. "Filter by" functionality working
 4. "Per page" functionality working
-5. More complext pagination with 
+5. More complex pagination with multiple page tab
 6. Favicon and custom tab text based on page
 
 ## Cool Ideas
